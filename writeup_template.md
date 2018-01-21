@@ -1,4 +1,4 @@
-**Advanced Lane Finding Project**
+****Advanced Lane Finding Project****
 
 The goals / steps of this project are the following:
 
@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [image05]: ./examples/distort_output.png "Distorted"
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image3]: ./output_images/binary_combo_example.png "Binary Example"
 [image45]: ./output_images/warped_straight_lines1.png "Warp Example"
 [image4]: ./output_images/straight_lines1.png "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
@@ -46,7 +46,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps in function `preprocess_imgae` in `lanes.py`).
+I used a combination of color and gradient thresholds to generate a binary image. Thresholding steps are defined in function `preprocess_imgae` in `lanes.py`).
 
 ![alt text][image3]
 
