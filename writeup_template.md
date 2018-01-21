@@ -46,7 +46,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image. Thresholding steps are defined in function `preprocess_imgae` in `lanes.py`).
+I used a combination of color and gradient thresholds to generate a binary image. Thresholding steps are defined in function `preprocess_image` in `lanes.py`).
 
 ![alt text][image3]
 
@@ -74,7 +74,7 @@ The function `process_image()` in `lanes.py` identifies lane-line pixels and fit
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in lines # through # in my code in function process_image` in `lanes.py`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
@@ -95,5 +95,6 @@ Here's a [link to my video result](./project_video.mp4)
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+In general the algorithm implemented used color and gradient information detect lane-line pixels that were then fitted to a second order polynom. The polynom was low pass filtered by taking mean over 5 samples. An outlier detection was implemented identify if an line deviates to much from it predecessors considering distance in x-axis, and polynom parameters.
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+The algorithm works well for the standard scenarios but for really curvy roads a shorter horizon is probably needed and also another approach to fitting. I would have liked to look into splines. To support this adaptivity a curvy road detector is needed. 
