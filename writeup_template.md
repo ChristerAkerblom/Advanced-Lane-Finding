@@ -56,14 +56,12 @@ I used a combination of color and gradient thresholds to generate a binary image
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The class Camera defined in `camera_mod.py` includes the perspective transform and is calculated at initialization. I found the source and destination points by experimenting with an image with straight lines which resulted in the following source and destination points:
-
 ```python
 
 src_pts = np.float32(((578,460),(255, 680), (1045,680), (702,460)))
 dst_pts = np.float32(((255,20), (255, 710), (1015,710), (1015,20))) 
 
 ```
-
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 ![alt text][image4]
@@ -71,17 +69,45 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-The function `process_image()` in `lanes.py` identifies lane-line pixels and fit them to a second order polynom. The result is presented in the image below.
-
+The function `process_image()` in `laneDetection.py` identifies lane-line pixels and fit them to a second order polynom. The result is presented in the image below. Note that there is some none line pixels present in the right line fit corrupting the estimate somewhat.
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in function process_image` in `lanes.py`.
+The radius of cruvature was calculated according to the formula describe in the course.
+´´´python
+    # Define conversions in x and y from pixels space to meters
+    ym_per_pix = 30/720 # meters per pixel in y dimension
+    xm_per_pix = 3.7/790 # meters per pixel in x dimension
+    y_eval = result.shape[0] * ym_per_pix
+    
+    # Fit new polynomials to x,y in world space
+    left_fit_cr = np.polyfit(ploty*ym_per_pix, left_fitx*xm_per_pix, 2)
+    right_fit_cr = np.polyfit(ploty*ym_per_pix, right_fitx*xm_per_pix, 2)
+    
+    # Calculate the new radii of curvature
+    left_curverad = ((1 + (2*left_fit_cr[0]*y_eval + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
+    right_curverad = ((1 + (2*right_fit_cr[0]*y_eval + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
+    
+    # Now our radius of curvature is in meters
+    k = 0.01
+    if left_curverad > 10000:left_curverad = 10000 
+    if right_curverad > 10000:right_curverad = 10000 
+    if (l_line.detected & r_line.detected):
+
+        l_line.radius_of_curvature = (1.0-k) * l_line.radius_of_curvature + k * left_curverad
+        r_line.radius_of_curvature = (1.0-k) * r_line.radius_of_curvature + k * right_curverad
+    else:
+        l_line.radius_of_curvature = left_curverad
+        r_line.radius_of_curvature = right_curverad
+        l_line.detected = True
+´´´
+
+I did this in lines # through # in my code in function process_image` in `laneDetection.py`.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this step in lines 312 through337 in my code in the function `process_image()` in `laneDetection.py`.  Here is an example of my result on a test image:
 
 ![alt text][image6]
 
