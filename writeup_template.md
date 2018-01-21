@@ -75,26 +75,23 @@ The function `process_image()` in `laneDetection.py` identifies lane-line pixels
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 The radius of cruvature was calculated according to the formula describe in the course.
+
 ´´´python
     # Define conversions in x and y from pixels space to meters
     ym_per_pix = 30/720 # meters per pixel in y dimension
     xm_per_pix = 3.7/790 # meters per pixel in x dimension
     y_eval = result.shape[0] * ym_per_pix
-    
     # Fit new polynomials to x,y in world space
     left_fit_cr = np.polyfit(ploty*ym_per_pix, left_fitx*xm_per_pix, 2)
     right_fit_cr = np.polyfit(ploty*ym_per_pix, right_fitx*xm_per_pix, 2)
-    
     # Calculate the new radii of curvature
     left_curverad = ((1 + (2*left_fit_cr[0]*y_eval + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
     right_curverad = ((1 + (2*right_fit_cr[0]*y_eval + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
-    
     # Now our radius of curvature is in meters
     k = 0.01
     if left_curverad > 10000:left_curverad = 10000 
     if right_curverad > 10000:right_curverad = 10000 
     if (l_line.detected & r_line.detected):
-
         l_line.radius_of_curvature = (1.0-k) * l_line.radius_of_curvature + k * left_curverad
         r_line.radius_of_curvature = (1.0-k) * r_line.radius_of_curvature + k * right_curverad
     else:
@@ -103,7 +100,7 @@ The radius of cruvature was calculated according to the formula describe in the 
         l_line.detected = True
 ´´´
 
-I did this in lines # through # in my code in function process_image` in `laneDetection.py`.
+I did this in lines 312 through 374 in my code in function `process_image` in `laneDetection.py`.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
