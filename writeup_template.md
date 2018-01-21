@@ -77,16 +77,19 @@ The function `process_image()` in `laneDetection.py` identifies lane-line pixels
 The radius of cruvature was calculated according to the formula describe in the course.
 
 ´´´python
+
     # Define conversions in x and y from pixels space to meters
     ym_per_pix = 30/720 # meters per pixel in y dimension
     xm_per_pix = 3.7/790 # meters per pixel in x dimension
     y_eval = result.shape[0] * ym_per_pix
+
     # Fit new polynomials to x,y in world space
     left_fit_cr = np.polyfit(ploty*ym_per_pix, left_fitx*xm_per_pix, 2)
     right_fit_cr = np.polyfit(ploty*ym_per_pix, right_fitx*xm_per_pix, 2)
     # Calculate the new radii of curvature
     left_curverad = ((1 + (2*left_fit_cr[0]*y_eval + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
     right_curverad = ((1 + (2*right_fit_cr[0]*y_eval + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
+    
     # Now our radius of curvature is in meters
     k = 0.01
     if left_curverad > 10000:left_curverad = 10000 
