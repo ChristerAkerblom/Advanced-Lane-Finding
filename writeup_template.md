@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image3]: ./output_images/binary_combo_example.png "Binary Example"
 [image45]: ./output_images/warped_straight_lines1.png "Warp Example"
 [image4]: ./output_images/straight_lines1.png "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image5]: ./output_images/color_fit_lines2.png "Fit Visual"
 [image6]: ./output_images/video_out.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
