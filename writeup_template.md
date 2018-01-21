@@ -95,6 +95,6 @@ Here's a [link to my video result](./project_video.mp4)
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-In general the algorithm implemented used color and gradient information detect lane-line pixels that were then fitted to a second order polynom. The polynom was low pass filtered by taking mean over 5 samples. An outlier detection was implemented identify if an line deviates to much from it predecessors considering distance in x-axis, and polynom parameters.
+In general the algorithm implemented used color and gradient information detect lane-line pixels that were then fitted to a second order polynom. The polynom was lowpass filtered by taking mean over five samples. An outlier detection was implemented identifying if an line deviates to much from it predecessors considering distance in x-axis and polynom parameters.
 
 The algorithm works well for the standard scenarios but for really curvy roads a shorter horizon is probably needed and also another approach to fitting. I would have liked to look into splines. To support this adaptivity a curvy road detector is needed. 
