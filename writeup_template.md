@@ -62,7 +62,7 @@ src_pts = np.float32(((578,460),(255, 680), (1045,680), (702,460)))
 dst_pts = np.float32(((255,20), (255, 710), (1015,710), (1015,20))) 
 
 ```
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+I verified that my perspective transform was working as expected by drawing the `src_pts` and `dst_pts` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 ![alt text][image4]
 ![alt text][image45]
