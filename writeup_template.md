@@ -15,9 +15,8 @@ The goals / steps of this project are the following:
 
 [image05]: ./camera_cal/calibration1.png "Distorted"
 [image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./test_images/test2.jpg
-[image35]: ./output_images/binary_combo_example.png "Binary Example"
+[image2]: ./test_images/test2.jpg "Road Transformed"
+[image3]: ./output_images/binary_combo_example.png "Binary Example"
 [image45]: ./output_images/warped_straight_lines1.png "Warp Example"
 [image4]: ./output_images/straight_lines1.png "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
@@ -50,7 +49,6 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 I used a combination of color and gradient thresholds to generate a binary image. Thresholding steps are defined in function `preprocess_image` in `lanes.py`).
 
 ![alt text][image3]
-![alt text][image35]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
