@@ -74,7 +74,7 @@ The function `process_image()` in `laneDetection.py` identifies lane-line pixels
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The radius of cruvature was calculated according to the formula describe in the course.
+The radius of curvature was calculated according to the formula describe in the course. A lowpass filter was applied to each line curvature since it can be assumed to be a slowly changing variable. Curvatures above 10000 m was not allowed, not to end up in problems with the filtering.
 
 ´´´
 
@@ -103,11 +103,11 @@ The radius of cruvature was calculated according to the formula describe in the 
         l_line.detected = True
 ´´´
 
-I did this in lines 312 through 374 in my code in function `process_image` in `laneDetection.py`.
+I did this in lines 312 through 374 in my code in function `process_image()` in `laneDetection.py`.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines 312 through337 in my code in the function `process_image()` in `laneDetection.py`.  Here is an example of my result on a test image:
+I implemented this step in lines 294 through 353 in my code in the function `process_image()` in `laneDetection.py`.  Here is an example of my result on a test image:
 
 ![alt text][image6]
 
