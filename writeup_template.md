@@ -76,7 +76,7 @@ The function `process_image()` in `laneDetection.py` identifies lane-line pixels
 
 The radius of cruvature was calculated according to the formula describe in the course.
 
-´´´python
+´´´
 
     # Define conversions in x and y from pixels space to meters
     ym_per_pix = 30/720 # meters per pixel in y dimension
